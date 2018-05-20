@@ -31,7 +31,7 @@ with open(FLAGS.reverse_dictionary, encoding='utf-8') as inf:
 
 
 model = Model(learning_rate=FLAGS.learning_rate, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps)
-model.build()
+model.build(embedding_file = "embedding.npy")
 
 
 with tf.Session() as sess:
