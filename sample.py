@@ -30,7 +30,7 @@ titles = ['江神子', '蝶恋花', '渔家傲']
 
 
 model = Model(learning_rate=FLAGS.learning_rate, batch_size=1, num_steps=1)
-model.build()
+model.build(embedding_file = "embedding.npy")
 
 with tf.Session() as sess:
     summary_string_writer = tf.summary.FileWriter(FLAGS.output_dir, sess.graph)
@@ -42,6 +42,7 @@ with tf.Session() as sess:
 
     try:
         checkpoint_path = tf.train.latest_checkpoint(FLAGS.output_dir)
+        print(checkpoint_path)
         saver.restore(sess, checkpoint_path)
         logging.debug('restore from [{0}]'.format(checkpoint_path))
 
